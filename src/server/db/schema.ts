@@ -94,7 +94,7 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
 }));
 
 export const verificationTokens = createTable(
-  "verification_token",
+  "verificationToken",
   {
     identifier: varchar("identifier", { length: 255 }).notNull(),
     token: varchar("token", { length: 255 }).notNull(),
