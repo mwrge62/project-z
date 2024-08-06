@@ -9,6 +9,7 @@ export default function Home() {
       <button onClick={() => signIn("google")}>Login</button>
       <button onClick={() => signOut()}>Log Out</button>
       <p>{data?.user.name}</p>
+      <p>{data?.user.email}</p>
       <p>{status}</p>
     </main>
   );
