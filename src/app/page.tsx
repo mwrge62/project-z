@@ -7,10 +7,12 @@ export default function Home() {
   const { data, status } = useSession();
   const [uploading, setUploading] = useState(false);
   const [uploadedUrl, setUploadedUrl] = useState("");
+  const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files![0];
     setUploading(true);
+    console.log("run");
 
     try {
       const { timestamp, signature } = await getSignature();
@@ -22,20 +24,39 @@ export default function Home() {
       formData.append("signature", signature);
       formData.append("folder", "videos");
 
-      const uploadResponse = await fetch(
+      const xhr = new XMLHttpRequest();
+      xhr.open(
+        "POST",
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/video/upload`,
-        {
-          method: "POST",
-          body: formData,
-        }
+        true
       );
 
-      const uploadResult = await uploadResponse.json();
-      setUploadedUrl(uploadResult.secure_url);
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const progress = (event.loaded / event.total) * 100;
+          setUploadProgress(progress);
+        }
+      };
+
+      xhr.onload = () => {
+        setUploading(false);
+        if (xhr.status === 200) {
+          const uploadResult = JSON.parse(xhr.responseText);
+          setUploadedUrl(uploadResult.secure_url);
+        } else {
+          console.error("Error uploading file:", xhr.statusText);
+        }
+      };
+
+      xhr.onerror = () => {
+        setUploading(false);
+        console.error("Error uploading file:", xhr.statusText);
+      };
+
+      xhr.send(formData);
     } catch (error) {
-      console.error("Error uploading file:", error);
-    } finally {
       setUploading(false);
+      console.error("Error uploading file:", error);
     }
   };
 
@@ -49,7 +70,12 @@ export default function Home() {
       <p>{status}</p>
       <form className="m-2">
         <input type="file" accept="video/*" onChange={handleUpload} />
-        {uploading && <p>Uploading...</p>}
+        {uploading && (
+          <div>
+            <p>Uploading: {uploadProgress.toFixed(2)}%</p>
+            <progress value={uploadProgress} max="100"></progress>
+          </div>
+        )}
         {uploadedUrl && <p>Uploaded URL: {uploadedUrl}</p>}
       </form>
     </main>
