@@ -13,7 +13,7 @@ export default function Home() {
   const handleUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files![0];
     setUploading(true);
-    setVideoPreviewUrl(URL.createObjectURL(file)); // Set the video preview URL
+    setVideoPreviewUrl(URL.createObjectURL(file));
 
     try {
       const { timestamp, signature } = await getSignature();
@@ -64,10 +64,10 @@ export default function Home() {
   return (
     <main className="m-2">
       <div>Home</div>
-      <button onClick={() => signIn("google")}>Login</button>
+      <button onClick={() => signIn()}>Login</button>
       <button onClick={() => signOut()}>Log Out</button>
-      <p>{data?.user.name}</p>
-      <p>{data?.user.email}</p>
+      <p>Name:{data?.user.name}</p>
+      <p>Email:{data?.user.email}</p>
       <p>{status}</p>
       <form className="m-2">
         <input type="file" accept="video/*" onChange={handleUpload} />
