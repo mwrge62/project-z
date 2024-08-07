@@ -8,11 +8,12 @@ export default function Home() {
   const [uploading, setUploading] = useState(false);
   const [uploadedUrl, setUploadedUrl] = useState("");
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [videoPreviewUrl, setVideoPreviewUrl] = useState<string | null>(null);
 
   const handleUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files![0];
     setUploading(true);
-    console.log("run");
+    setVideoPreviewUrl(URL.createObjectURL(file)); // Set the video preview URL
 
     try {
       const { timestamp, signature } = await getSignature();
@@ -70,6 +71,12 @@ export default function Home() {
       <p>{status}</p>
       <form className="m-2">
         <input type="file" accept="video/*" onChange={handleUpload} />
+        {videoPreviewUrl && (
+          <div>
+            <p>Video Preview:</p>
+            <video src={videoPreviewUrl} controls width="400" />
+          </div>
+        )}
         {uploading && (
           <div>
             <p>Uploading: {uploadProgress.toFixed(2)}%</p>
