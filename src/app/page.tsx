@@ -2,6 +2,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 import getSignature from "./_action";
+import VideoCard from "@/components/VideoCard";
 
 export default function Home() {
   const { data, status } = useSession();
@@ -61,8 +62,10 @@ export default function Home() {
     }
   };
 
+  const date = 1000000
+
   return (
-    <main className="m-2">
+    <main className="m-2 bg-[#0f0f0f] text-white">
       <div>Home</div>
       <button onClick={() => signIn()}>Login</button>
       <button onClick={() => signOut()}>Log Out</button>
@@ -84,7 +87,197 @@ export default function Home() {
           </div>
         )}
         {uploadedUrl && <p>Uploaded URL: {uploadedUrl}</p>}
+        <video
+          src="https://res.cloudinary.com/dz1zuoloq/video/upload/f_auto:video,q_auto/v1/videos/cohdx9yfaxpjvp8aoge4"
+          controls={true}
+        ></video> 
       </form>
+      <div className="grid grid-flow-row auto-col-[320px] auto-row-[320px] grid-cols-auto">
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+        <VideoCard
+          title="Learn Drizzle In 60 Minutes"
+          channel="Web Dev Simplified"
+          logo="/unnamed.jpg"
+          thumbnail="/default.webp"
+          time={new Date(date)}
+          views={56}
+        ></VideoCard>
+      </div>
     </main>
   );
 }
