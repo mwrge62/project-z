@@ -107,3 +107,19 @@ export const verificationTokens = createTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 );
+
+export const channel = createTable("channel", {
+  id: varchar("id", { length: 255 })
+    .notNull()
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  userId: varchar("id", { length: 255 })
+    .notNull()
+    .unique()
+    .references(() => users.id),
+  email: varchar("email", { length: 255 })
+    .notNull()
+    .unique()
+    .references(() => users.email),
+  
+});
