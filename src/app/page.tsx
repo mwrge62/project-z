@@ -3,6 +3,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 import getSignature from "./_action";
 import VideoCard from "@/components/VideoCard";
+import { createChannel, getChannel } from "./_database";
 
 export default function Home() {
   const { data, status } = useSession();
@@ -62,7 +63,11 @@ export default function Home() {
     }
   };
 
-  const date = 1000000
+  const date = 1000000;
+
+  let d;
+
+  // getChannel().then((k) => console.log(k));
 
   return (
     <main className="m-2 bg-[#0f0f0f] text-white">
@@ -71,6 +76,7 @@ export default function Home() {
       <button onClick={() => signOut()}>Log Out</button>
       <p>Name:{data?.user.name}</p>
       <p>Email:{data?.user.email}</p>
+      <p>channel:</p>
       <p>{status}</p>
       <form className="m-2">
         <input type="file" accept="video/*" onChange={handleUpload} />
@@ -87,10 +93,18 @@ export default function Home() {
           </div>
         )}
         {uploadedUrl && <p>Uploaded URL: {uploadedUrl}</p>}
+        <button
+          onClick={() => {
+            createChannel("Sahitya");
+          }}
+          className="bg-white text-black px-2 py-1 m-2"
+        >
+          Create Channel
+        </button>
         <video
           src="https://res.cloudinary.com/dz1zuoloq/video/upload/f_auto:video,q_auto/v1/videos/cohdx9yfaxpjvp8aoge4"
           controls={true}
-        ></video> 
+        ></video>
       </form>
       <div className="grid grid-flow-row auto-col-[320px] auto-row-[320px] grid-cols-auto">
         <VideoCard

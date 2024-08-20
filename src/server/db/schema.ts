@@ -25,7 +25,7 @@ export const users = createTable("user", {
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
   name: varchar("name", { length: 255 }),
-  email: varchar("email", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).unique().notNull(),
   emailVerified: timestamp("emailVerified", {
     mode: "date",
     withTimezone: true,
@@ -113,13 +113,19 @@ export const channel = createTable("channel", {
     .notNull()
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  userId: varchar("id", { length: 255 })
+  userId: varchar("userId", { length: 255 })
     .notNull()
-    .unique()
     .references(() => users.id),
   email: varchar("email", { length: 255 })
     .notNull()
-    .unique()
-    .references(() => users.email),
-  
+    .references(() => users.email, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
+  name: varchar("name", { length: 255 }).notNull(),
 });
+
+export const channelRelations = relations(channel, ({ one }) => ({
+  user: one(users, { fields: [channel.userId], references: [users.id] }),
+  userEmail: one(users, { fields: [channel.email], references: [users.email] }),
+}));
