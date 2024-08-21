@@ -5,17 +5,18 @@ import {
   MenuIcon,
   MessageSquareDotIcon,
   NotepadText,
-  Video,
+  Settings,
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const Navbar = () => {
   return (
     <nav className="fixed left-0 top-0 w-[5rem] bg-zinc-800 h-[calc(100vh-1rem)] flex flex-col justify-between py-4 items-center text-zinc-400 m-2 rounded-2xl z-50">
       <div className="flex flex-col gap-4 justify-center items-center">
         <button className="p-2 rounded-[0.5rem] hover:text-zinc-50 transition-all duration-75">
-          <MenuIcon strokeWidth={2.5} className="w-6 h-6" aria-hidden="true" />
+          <MenuIcon strokeWidth={2.5} className="w-7 h-6" aria-hidden="true" />
         </button>
         <Link
           href="/"
@@ -63,6 +64,21 @@ const Navbar = () => {
             aria-hidden="true"
           />
           <div className="text-xs">Download</div>
+        </Link>
+      </div>
+      <div className="flex flex-col gap-4 justify-center items-center">
+        <Link href="/profile">
+          <Avatar>
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+        </Link>
+        <Link
+          href="/settings"
+          className="p-2 rounded-[0.5rem] hover:text-zinc-50 transition-all duration-75 flex flex-col justify-center items-center"
+        >
+          <Settings strokeWidth={2.5} className="w-6 h-6" aria-hidden="true" />
+          <div className="text-xs">Settings</div>
         </Link>
       </div>
     </nav>
