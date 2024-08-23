@@ -123,7 +123,7 @@ const Navbar = () => {
         <Link
           href="/settings"
           className={`p-2 rounded-[0.5rem] hover:text-zinc-50 transition-all duration-75 flex flex-row w-fit ${
-            isPanelOpen ? "justify-start gap-10 " : "justify-center"
+            isPanelOpen ? "justify-start gap-10" : "justify-center self-center"
           } items-center`}
         >
           <Settings strokeWidth={2.5} className="w-6 h-6" aria-hidden="true" />
