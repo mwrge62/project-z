@@ -105,7 +105,7 @@ const Navbar = () => {
           >
             <Avatar className="">
               <AvatarImage src={session.user.image} />
-              <AvatarFallback>Z</AvatarFallback>
+              <AvatarFallback className="bg-zinc-700">Z</AvatarFallback>
             </Avatar>
             {isPanelOpen && <div className="text-xs">{session.user.name?.split(" ")[0]}</div>}
           </Link>
