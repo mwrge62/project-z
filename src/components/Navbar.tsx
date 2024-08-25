@@ -31,8 +31,8 @@ const Navbar = () => {
           className="p-2 rounded-[0.5rem] hover:text-zinc-50 transition-all duration-75 w-fit"
           onClick={() => {
             setPanelOpen((prev) => !prev);
-            console.log(`panel is ${!isPanelOpen}`);
-            console.log(session?.user);
+            // console.log(`panel is ${!isPanelOpen}`);
+            // console.log(session?.user);
           }}
         >
           <MenuIcon strokeWidth={2.5} className="w-6 h-6" aria-hidden="true" />

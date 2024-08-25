@@ -63,14 +63,14 @@ export default function Home() {
     }
   };
 
-  const date = 1000000;
-
-  let d;
-
-  // getChannel().then((k) => console.log(k));
-
   return (
-    <main className="m-2 bg-[#0f0f0f] text-white ml-20">
+    <main className="bg-[#0f0f0f] text-white ml-20 flex flex-row justify-center items-center gap-4 min-h-screen">
+      <div className="flex flex-col w-2/3 justify-center items-center gap-4 h-2/3">
+        <div className="flex w-full h-2/3 bg-[#222222] rounded-md border-2 border-zinc-400"></div>
+        <div className="flex w-full h-1/3 bg-[#222222] rounded-md border-2 border-zinc-400"></div>
+      </div>
+      <div className="flex w-1/5 bg-[#222222] rounded-md border-2 border-zinc-400 h-1/5"></div>
+
       {/* <div>Home</div>
       <button onClick={() => signIn()}>Login</button>
       <button onClick={() => signOut()}>Log Out</button>
